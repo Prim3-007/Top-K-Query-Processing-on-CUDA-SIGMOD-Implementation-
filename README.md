@@ -1,49 +1,61 @@
-# Top-K Query Processing on GPU
+# Top-K GPU Query Processing
 
-This repository contains a Jupyter notebook implementing and benchmarking Top-K query processing algorithms on GPU using CuPy and CUDA. It includes both bitonic and sorting-based approaches with detailed performance evaluations.
+This project implements GPU-accelerated Top-K query processing using CuPy and CUDA, showcasing advanced performance optimization techniques from the SIGMOD 2018 paper *"Efficient Top-K Query Processing on Massively Parallel Hardware."*
 
 ---
 
-## 📘 Notebook
+## 📘 Notebook Overview
 
-- **`main.ipynb`** — The core notebook where Top-K logic is implemented and tested
+**File:** `main.ipynb`
+
+This notebook includes:
+- Implementation of Bitonic Top-K using fused CUDA kernels
+- Baseline sorting-based Top-K via CuPy
+- Optional fused filtering (e.g., `WHERE value > threshold`)
+- Accuracy checking between methods
+- GPU memory usage tracking (`memGetInfo`)
+- Runtime benchmarking across multiple `K` values and distributions
+- Speedup visualization and analysis
 
 ---
 
 ## 🛠️ Features
 
-- Bitonic Top-K using shared memory and CUDA kernels
-- Sorting-based Top-K using `cp.sort()`
-- Execution time benchmarks
-- CuPy-powered GPU acceleration
-- Synthetic dataset generation for testing
-- (Optional) filtering and validation logic
+- ✅ GPU-based Bitonic Top-K kernel
+- ✅ Sorting-Based Top-K using `cp.sort()`
+- ✅ Optional data filtering before Top-K
+- ✅ Accuracy validation using `np.allclose`
+- ✅ Multi-distribution data testing
+- ✅ Memory profiling before/after GPU calls
+- ✅ Streamlined for Google Colab or local CUDA environments
 
 ---
 
 ## 🚀 How to Run
 
-1. Open the notebook in Google Colab or any JupyterLab instance with CUDA support.
-2. Make sure `cupy` and `matplotlib` are installed.
-3. Run each cell sequentially and observe the outputs and plots.
+1. Open `main.ipynb` in [Google Colab](https://colab.research.google.com) or a local Jupyter environment with GPU support.
+2. Make sure `cupy`, `matplotlib`, `seaborn`, and `numpy` are available.
+3. Run the notebook sequentially and review speedup plots and profiling outputs.
 
 ---
 
-## 📈 Output
+## 📈 Sample Outputs
 
-- Average execution time per method (Sorting vs Bitonic)
-- Speedup plots
-- Top-K values from synthetic distributions
+- Runtime benchmarks for each method
+- GPU memory usage statistics
+- Accuracy comparison table
+- Distribution-aware performance graphs
 
 ---
 
-## 📘 Reference
+## 🧠 Reference
 
-This implementation is inspired by:
-- SIGMOD 2018: *Efficient Top-K Query Processing on Massively Parallel Hardware*
+- **T. Kipf, A. Kemper, T. Neumann.**  
+  *Efficient Top-K Query Processing on Massively Parallel Hardware* (SIGMOD 2018)  
+  [Link to Paper](https://dl.acm.org/doi/10.1145/3183713.3196909)
 
 ---
 
 ## 📄 License
 
-MIT License
+MIT License. Use for research, experimentation, or educational purposes.
