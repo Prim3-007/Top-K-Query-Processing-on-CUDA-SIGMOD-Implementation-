@@ -1,64 +1,49 @@
-# Efficient Top-K Query Processing on GPU
+# Top-K Query Processing on GPU
 
-This repository implements and benchmarks GPU-accelerated algorithms for extracting Top-K elements from large datasets, based on the SIGMOD 2018 paper:  
-**"Efficient Top-K Query Processing on Massively Parallel Hardware"**  
-Includes Bitonic Top-K, Sorting-Based Top-K, memory profiling, accuracy checks, and fused filtering.
+This repository contains a Jupyter notebook implementing and benchmarking Top-K query processing algorithms on GPU using CuPy and CUDA. It includes both bitonic and sorting-based approaches with detailed performance evaluations.
 
 ---
 
-## 📂 Contents
+## 📘 Notebook
 
-- `Final_Optimized_TopK_Colab.ipynb` — Main Colab notebook with modular code
-- Bitonic Top-K implementation using CUDA via CuPy
-- Sorting-based Top-K using CuPy's optimized radix sort
-- Filtered Top-K (e.g., retweet_count > threshold)
-- Accuracy validation: compare Top-K results between methods
-- Memory profiling via `cupy.cuda.runtime.memGetInfo()`
-- Multi-distribution data testing (uniform, exponential, bucket killer, etc.)
+- **`main.ipynb`** — The core notebook where Top-K logic is implemented and tested
 
 ---
 
-## 🚀 Features
+## 🛠️ Features
 
-- ✅ Full Bitonic Top-K with kernel fusion
-- ✅ Sorting-based Top-K as baseline
-- ✅ Optional fused filter stage inside Bitonic pipeline
-- ✅ Memory profiling before/after each GPU kernel
-- ✅ Accuracy verification using `np.allclose`
-- ✅ Support for multiple synthetic data distributions
-- ✅ Execution time + speedup plots
-
----
-
-## 📊 Usage
-
-Run the notebook in Google Colab or any Jupyter environment with CUDA support.
-
-```bash
-# Example: Generate and compare Top-K performance
-K = [64, 128, 256, 512]
-distribution = "exponential"
-threshold = 50  # Filter for fused filtering
-```
+- Bitonic Top-K using shared memory and CUDA kernels
+- Sorting-based Top-K using `cp.sort()`
+- Execution time benchmarks
+- CuPy-powered GPU acceleration
+- Synthetic dataset generation for testing
+- (Optional) filtering and validation logic
 
 ---
 
-## 📈 Sample Output
+## 🚀 How to Run
 
-- Speedup graphs
-- Accuracy table for each K
-- Memory used before/after kernels
+1. Open the notebook in Google Colab or any JupyterLab instance with CUDA support.
+2. Make sure `cupy` and `matplotlib` are installed.
+3. Run each cell sequentially and observe the outputs and plots.
+
+---
+
+## 📈 Output
+
+- Average execution time per method (Sorting vs Bitonic)
+- Speedup plots
+- Top-K values from synthetic distributions
 
 ---
 
 ## 📘 Reference
 
-- T. Kipf, A. Kemper, T. Neumann.  
-  **"Efficient Top-K Query Processing on Massively Parallel Hardware."**  
-  *SIGMOD 2018* [[PDF](https://dl.acm.org/doi/10.1145/3183713.3196909)]
+This implementation is inspired by:
+- SIGMOD 2018: *Efficient Top-K Query Processing on Massively Parallel Hardware*
 
 ---
 
 ## 📄 License
 
-MIT License. Feel free to use and cite.
+MIT License
