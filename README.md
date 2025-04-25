@@ -52,7 +52,6 @@ This notebook includes:
 
 - **T. Kipf, A. Kemper, T. Neumann.**  
   *Efficient Top-K Query Processing on Massively Parallel Hardware* (SIGMOD 2018)  
-  [Link to Paper](https://dl.acm.org/doi/10.1145/3183713.3196909)
 
 ---
 
